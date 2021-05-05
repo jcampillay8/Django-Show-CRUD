@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style_add_show.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <a href="/home"><h3>Go Back &#8594;</h3></a>
+            <h1>Edit Show {{show.id}}</h1>            
+        </div>
+        <form name="update_show" action="/home/update" method="post">
+        {% csrf_token %}
+        
+        <div class="row1">
+            <h3>Title</h3>
+            <br>
+            <input class="input" type="text" name="title" value="{{show.title}}">
+        </div>
+        <div class="row2">
+            <div class="row2_1">
+                <h3>Network</h3>
+                <br>
+                <input class="input" type="text" name="network" value="{{show.network}}">
+            </div>
+            <div class="row2_2">
+                <h3>Release Date</h3>
+                <br>
+                <input class="input" type="date" name="release_date" value="{{show.release_date}}">
+                <input class="input" type="hidden" name="id" value="{{show.id}}">
+            </div>
+        </div>
+        <div class="row3">
+            <h3>Description</h3>
+                <br>
+            <textarea name="description"></textarea>
+        </div>
+        
+        <div class="row4">
+            <input id="button" type="submit">
+            <br>
+            <a href="/home/{{show.id}}"><h3>Go to show &#8594;</h3></a>
+        </div>
+    </form>
+    </div>
+    
+    </div>
+</body>
+</html>

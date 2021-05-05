@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style_home.css' %}">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header"><h1>All Shows</h1></div>
+        <div class="tabla_show">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Network</th>
+                        <th>Release Date</th>
+                        <th>Created at</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for show in shows %}
+                    <tr>
+                        <td>{{show.id}}</td>
+                        <td>{{show.title}}</td>
+                        <td>{{show.network}}</td>
+                        <td>{{show.release_date}}</td>
+                        <td>{{show.created_at}}</td>
+                        <td><a href="/home/{{show.id}}">Show</a> | <a href="/home/{{show.id}}/edit">Edit</a> | <a href="/home/{{show.id}}/destroy">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="add_show">
+            <a href="/home/new_show"><h2>Add a new Show &#8594; </h2></a>
+        </div>
+    </div>
+</body>
+</html>
